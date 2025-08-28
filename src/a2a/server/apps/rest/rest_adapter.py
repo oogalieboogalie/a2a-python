@@ -94,14 +94,6 @@ class RESTAdapter:
         self.handler = RESTHandler(
             agent_card=agent_card, request_handler=http_handler
         )
-        if (
-            self.agent_card.supports_authenticated_extended_card
-            and self.extended_agent_card is None
-            and self.extended_card_modifier is None
-        ):
-            logger.error(
-                'AgentCard.supports_authenticated_extended_card is True, but no extended_agent_card was provided. The /agent/authenticatedExtendedCard endpoint will return 404.'
-            )
         self._context_builder = context_builder or DefaultCallContextBuilder()
 
     @rest_error_handler
