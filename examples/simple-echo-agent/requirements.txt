@@ -1,0 +1,6 @@
+# No additional requirements beyond the base a2a-sdk[http-server]
+# All dependencies are included in the main package
+
+# For development and testing
+# uvicorn  # Already included in a2a-sdk[http-server]
+# fastapi  # Already included in a2a-sdk[http-server]
