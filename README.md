@@ -59,6 +59,37 @@ Install the core SDK and any desired extras using your preferred package manager
 | **SQLite**               | `uv add "a2a-sdk[sqlite]"`                 | `pip install "a2a-sdk[sqlite]"`              |
 | **All SQL Drivers**      | `uv add "a2a-sdk[sql]"`                    | `pip install "a2a-sdk[sql]"`                 |
 
+## 🏁 Quick Start
+
+**New to A2A?** Start here for a guided introduction:
+
+### 📖 [Complete Getting Started Guide](GETTING_STARTED.md)
+A comprehensive tutorial covering everything from installation to building your first agent, with detailed explanations of core concepts and best practices.
+
+### 🎯 [Ready-to-Use Examples](examples/)
+Multiple working examples demonstrating different patterns:
+
+- **[Simple Echo Agent](examples/simple-echo-agent/)** - Perfect for beginners
+- **[File Processing Agent](examples/file-processor/)** - Handle binary data and documents  
+- **[Production Template](examples/production-template/)** - Docker + deployment ready
+- **[Development Utils](examples/utils/)** - Testing and validation tools
+
+### 🚀 30-Second Start
+
+```bash
+# 1. Install the SDK
+pip install "a2a-sdk[http-server]"
+
+# 2. Run the example echo agent
+cd examples/simple-echo-agent
+python agent.py
+
+# 3. Test it (in another terminal)
+python test_client.py
+```
+
+---
+
 ## Examples
 
 ### [Helloworld Example](https://github.com/a2aproject/a2a-samples/tree/main/samples/python/agents/helloworld)
