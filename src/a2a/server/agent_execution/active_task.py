@@ -587,6 +587,19 @@ class ActiveTask:
             self._is_finished.set()
             self._request_queue.shutdown(immediate=True)
             await self._event_queue_agent.close(immediate=True)
+
+            if self._producer_task and not self._producer_task.done():
+                try:
+                    await self._producer_task
+                except asyncio.CancelledError:
+                    pass
+                except Exception as e:  # noqa: BLE001
+                    logger.debug(
+                        'Consumer[%s]: Awaited producer_task raised %r',
+                        self._task_id,
+                        e,
+                    )
+
             async with self._lock:
                 self._reference_count -= 1
             logger.debug('Consumer[%s]: Finishing', self._task_id)
