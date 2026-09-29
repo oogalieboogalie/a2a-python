@@ -47,6 +47,7 @@ from a2a.utils.errors import (
     PushNotificationNotSupportedError,
     TaskNotCancelableError,
     TaskNotFoundError,
+    UnsupportedOperationError,
 )
 from a2a.utils.task import (
     apply_history_length,
@@ -198,7 +199,7 @@ class DefaultRequestHandlerV2(RequestHandler):
                 task_id, call_context=context, create_task_if_missing=False
             )
             result = await active_task.cancel(context)
-        except InvalidParamsError as e:
+        except UnsupportedOperationError as e:
             raise TaskNotCancelableError from e
 
         if isinstance(result, Message):
