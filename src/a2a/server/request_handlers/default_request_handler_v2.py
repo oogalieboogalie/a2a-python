@@ -237,6 +237,15 @@ class DefaultRequestHandlerV2(RequestHandler):
             task = await self.task_store.get(original_task_id, call_context)
             if not task:
                 raise TaskNotFoundError(f'Task {original_task_id} not found')
+            # Agents must reject a message whose contextId differs from that
+            # of the task it names.
+            if original_context_id and task.context_id != original_context_id:
+                raise InvalidParamsError(
+                    message=(
+                        f'Context {original_context_id} does not match '
+                        f'context {task.context_id} of task {original_task_id}'
+                    )
+                )
 
         # Build context to resolve or generate missing IDs
         request_context = await self._request_context_builder.build(
