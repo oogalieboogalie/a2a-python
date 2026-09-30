@@ -167,6 +167,7 @@ TResponse
 typ
 typeerror
 UIDs
+urlsafe
 versioned
 Versioned
 vulnz
